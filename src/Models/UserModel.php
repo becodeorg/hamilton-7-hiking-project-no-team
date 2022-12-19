@@ -3,10 +3,10 @@
 class UserModel extends Database{
 
 
-    public function create(string $username,string $firstname,string $lastname,string $email, string $passhash,$isAdmin=false): void
+    public function create(string $username,string $firstname,string $lastname,string $email, string $passhash,$isAdmin=0): void
     {
         if (!$this->query(
-            "INSERT INTO users(username, email, firstname, lastname, passhash, isAdmin) VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO Users(username, mail, firstname, lastname, passhash, isAdmin) VALUES (?, ?, ?, ?, ?, ?)",
             [
                 $username,
                 $email,
@@ -23,7 +23,7 @@ class UserModel extends Database{
     public function find(string $username): array
     {
         if (!$user = $this->query(
-            "SELECT * FROM users WHERE username = ?",
+            "SELECT * FROM Users WHERE username = ?",
             [
                 $username,
             ]
@@ -35,6 +35,3 @@ class UserModel extends Database{
     }
 }
 
-$test = new UserModel();
-$test->create('test1', 'Testeur', 'Un', 'testteur@bob.net', 'fhkzhlkdjlqsjoau');
-var_dump($test->find('test1'));

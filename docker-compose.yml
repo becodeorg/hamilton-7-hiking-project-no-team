@@ -40,12 +40,6 @@ services:
         image: phpmyadmin/phpmyadmin
         links:
             - mysql
-        environment:
-            PMA_HOST: mysql
-            PMA_PORT: 3306
-            PMA_ARBITRARY: 1
-            PMA_USER: "playground-user"
-            PMA_PASSWORD: "playground-pass1234"
         restart: always
         depends_on:
             - mysql
