@@ -1,20 +1,16 @@
 <?php
-class HikeModel extends Database{
-    public function create(string $name,$date = date("Y/m/d"),float $distance,$duration, float $elevation_gain,string $description,int $updateNeeded = 0): void
+declare(strict_types=1);
+
+class HikeModel extends Database 
+{
+    public function create(string $name,float $distance,$duration, float $elevation_gain,string $description,int $updateNeeded = 0): void
     {
 
-//         `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-//   `creationDate` date DEFAULT NULL,
-//   `distance` float DEFAULT NULL,
-//   `duration` time DEFAULT NULL,
-//   `elevation_gain` float DEFAULT NULL,
-//   `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-//   `updateNeeded` tinyint(1) DEFAULT NULL
         if (!$this->query(
             "INSERT INTO Hikes (name, creationDate, distance, duration, elevation_gain, description, updateNeeded) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [
                 $name,
-                $date,
+                date("Y/m/d"),
                 $distance,
                 $duration,
                 $elevation_gain,
@@ -38,5 +34,23 @@ class HikeModel extends Database{
         }
 
         return $hike;
+    }
+
+    public function findAllindex(): array
+    {
+        return $this->query(
+            "SELECT ID, name, creationDate ,distance FROM Hikes",
+        )->fetchAll();
+
+    
+    }
+
+    public function showIndex(){
+        $hikes = $this->findAllindex();
+
+        include 'Views/Includes/Header.view.php';
+        include 'Views/index.view.php';
+        include 'Views/Includes/Footer.view.php';
+        
     }
 }
