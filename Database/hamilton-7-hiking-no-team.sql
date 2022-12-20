@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql:3306
--- Generation Time: Dec 16, 2022 at 01:49 PM
--- Server version: 8.0.31
--- PHP Version: 8.0.19
+-- Host: localhost
+-- Erstellungszeit: 19. Dez 2022 um 09:57
+-- Server-Version: 8.0.21-0ubuntu0.20.04.4
+-- PHP-Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,30 +18,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `HikesDB`
+-- Datenbank: `hamilton-7-hiking-no-team`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Hikes`
+-- Tabellenstruktur für Tabelle `Hikes`
 --
 
 CREATE TABLE `Hikes` (
   `ID` int NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `creationDate` date DEFAULT NULL,
   `distance` float DEFAULT NULL,
   `duration` time DEFAULT NULL,
   `elevation_gain` float DEFAULT NULL,
-  `description` varchar(250) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `updateNeeded` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TagRelations`
+-- Tabellenstruktur für Tabelle `TagRelations`
 --
 
 CREATE TABLE `TagRelations` (
@@ -52,48 +52,48 @@ CREATE TABLE `TagRelations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Tags`
+-- Tabellenstruktur für Tabelle `Tags`
 --
 
 CREATE TABLE `Tags` (
   `ID` int NOT NULL,
-  `tagname` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `tagname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Tabellenstruktur für Tabelle `Users`
 --
 
 CREATE TABLE `Users` (
   `ID` int NOT NULL,
-  `firstname` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `lastname` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `username` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `mail` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `passhash` varchar(75) COLLATE utf8mb4_general_ci NOT NULL,
+  `firstname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mail` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `passhash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for table `Hikes`
+-- Indizes für die Tabelle `Hikes`
 --
 ALTER TABLE `Hikes`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `Tags`
+-- Indizes für die Tabelle `Tags`
 --
 ALTER TABLE `Tags`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `Users`
+-- Indizes für die Tabelle `Users`
 --
 ALTER TABLE `Users`
   ADD PRIMARY KEY (`ID`),
@@ -102,23 +102,23 @@ ALTER TABLE `Users`
   ADD UNIQUE KEY `passhash` (`passhash`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT for table `Hikes`
+-- AUTO_INCREMENT für Tabelle `Hikes`
 --
 ALTER TABLE `Hikes`
   MODIFY `ID` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Tags`
+-- AUTO_INCREMENT für Tabelle `Tags`
 --
 ALTER TABLE `Tags`
   MODIFY `ID` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Users`
+-- AUTO_INCREMENT für Tabelle `Users`
 --
 ALTER TABLE `Users`
   MODIFY `ID` int NOT NULL AUTO_INCREMENT;
