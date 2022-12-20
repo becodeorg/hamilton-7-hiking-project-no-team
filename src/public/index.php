@@ -1,7 +1,17 @@
 <?php
+
 declare(strict_types=1);
+
+session_start();
+
 require 'vendor/autoload.php';
 
-$test = new UserModel();
-$test->create('test6399', 'Ty', 'Tester', 'test566@server.com', 'cszzjhqldkuçojjsjssqqkdmq');
-var_dump($test->find('test6399'));
+$url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+$method = $_SERVER['REQUEST_METHOD'];
+
+switch($url){
+    case $url === '':
+        //TODO Index Page
+    
+
+}
