@@ -1,5 +1,13 @@
 <?php
 
+
+
+
+
+// $HikeController = new HikeController();
+// $HikeController->showIndex();
+
+
 declare(strict_types=1);
 
 session_start();
@@ -9,20 +17,37 @@ require 'vendor/autoload.php';
 $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $method = $_SERVER['REQUEST_METHOD'];
 
-$HikeController = new HikeController();
-$HikeController->showIndex();
+if ($url === '/' || $url === '') {
+    $HikeController = new HikeController();
+    $HikeController->showIndex();
 
+}
 
-// switch($url){
-//     case $url === '':
-//         //TODO Index Page
-//         echo "test";
-//         $HikeModel = new HikeModel();
-//         var_dump($HikeModel);
-//         break;
+if ($url === 'registration') {
+    $authController = new AuthController();
 
-//     case $url === "register":
-//         break;
-    
+    if ($method === 'GET') {
+        $authController->showRegistrationForm();
+    }
 
+    if ($method === 'POST') {
+        $authController->register($_POST);
+    }
+}
+
+// if ($url === 'login') {
+//     $authController = new AuthController();
+
+//     if ($method === 'GET') {
+//         $authController->showLoginForm();
+//     }
+
+//     if ($method === 'POST') {
+//         $authController->login($_POST);
+//     }
+// }
+
+// if ($url === 'logout') {
+//     $authController = new AuthController();
+//     $authController->logout();
 // }

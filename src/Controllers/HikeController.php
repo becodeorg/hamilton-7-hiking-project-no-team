@@ -3,7 +3,7 @@
 class HikeController{
     private HikeModel $HikeModel;
     
-    public function showIndex(){
+    public function showIndex():void{
         $this->HikeModel = new HikeModel();
         $hikes = $this->HikeModel->findAllindex();
 
