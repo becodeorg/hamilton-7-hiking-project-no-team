@@ -13,5 +13,13 @@
         <label for="password">Password</label>
         <input type="password" name="password">
     </div>
+    <div>
+        <label for="firstname">Firstname: </label>
+        <input type="text" name="firstname">
+    </div>
+    <div>
+        <label for="lastname">Lastname: </label>
+        <input type="text" name="lastname">
+    </div>
     <button type="submit">Register !</button>
 </form>

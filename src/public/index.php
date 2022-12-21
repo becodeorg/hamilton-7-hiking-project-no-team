@@ -1,9 +1,4 @@
 <?php
-
-
-
-
-
 // $HikeController = new HikeController();
 // $HikeController->showIndex();
 
@@ -35,19 +30,20 @@ if ($url === 'registration') {
     }
 }
 
-// if ($url === 'login') {
-//     $authController = new AuthController();
+if ($url === 'login') {
+    var_dump($_SESSION);
+    $authController = new AuthController();
 
-//     if ($method === 'GET') {
-//         $authController->showLoginForm();
-//     }
+    if ($method === 'GET') {
+        $authController->showLoginForm();
+    }
 
-//     if ($method === 'POST') {
-//         $authController->login($_POST);
-//     }
-// }
+    if ($method === 'POST') {
+        $authController->login($_POST);
+    }
+}
 
-// if ($url === 'logout') {
-//     $authController = new AuthController();
-//     $authController->logout();
-// }
+if ($url === 'logout') {
+    $authController = new AuthController();
+    $authController->logout();
+}
