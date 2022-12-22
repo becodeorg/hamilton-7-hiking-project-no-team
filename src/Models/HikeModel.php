@@ -22,12 +22,12 @@ class HikeModel extends Database
         }
     }
 
-    public function find(string $name): array
+    public function find(string $id):array|false
     {
         if (!$hike = $this->query(
-            "SELECT * FROM Hikes WHERE name = ?",
+            "SELECT * FROM Hikes WHERE ID = ?",
             [
-                $name,
+                $id,
             ]
         )->fetch()) {
             throw new Exception('Entry not found.');
@@ -36,7 +36,7 @@ class HikeModel extends Database
         return $hike;
     }
 
-    public function findAllindex(): array
+    public function findAllindex(): array|false
     {
         return $this->query(
             "SELECT ID, name, creationDate ,distance FROM Hikes",
@@ -45,12 +45,6 @@ class HikeModel extends Database
     
     }
 
-    public function showIndex(){
-        $hikes = $this->findAllindex();
+    
 
-        include 'Views/Includes/Header.view.php';
-        include 'Views/index.view.php';
-        include 'Views/Includes/Footer.view.php';
-        
-    }
 }
