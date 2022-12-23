@@ -33,5 +33,20 @@ class UserModel extends Database{
 
         return $user;
     }
+
+    public function findProfile(string $username): array
+    {
+        if (!$user = $this->query(
+            "SELECT username, mail, firstname, lastname FROM Users WHERE username = ?",
+            [
+                $username,
+            ]
+        )->fetch()) {
+            throw new Exception('User Not Found');
+        }
+
+        return $user;
+    }
 }
+
 

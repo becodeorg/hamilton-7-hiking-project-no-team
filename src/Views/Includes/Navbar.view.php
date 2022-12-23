@@ -16,6 +16,7 @@
     <li> <a  href="/">Home</a></li>
         <?php if (!empty($_SESSION['user']['loggedIn'])) { ?>
             <li><a  href="/logout">Logout</a></li>
+            <li><a  href="/profil">Profil</a></li>
         <?php } else { ?>
             <li><a href="/login">Login</a></li>
             <li><a href="/registration">Registration</a></li>

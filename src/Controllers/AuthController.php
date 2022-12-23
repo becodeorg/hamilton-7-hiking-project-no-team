@@ -42,18 +42,18 @@ class AuthController{
 
         // Sanitize/validate input
         $username = htmlspecialchars($input['username']);
-        $password = htmlspecialchars($input['password']);
+        $password = $input['password'];
 
         $user = $this->usermodel->find($username);
 
-        if (!password_verify($password, $user['password'])) {
+        if (!password_verify($password, $user['passhash'])) {
             throw new Exception("Failed login attempt : wrong password");
         }
 
         $_SESSION['user'] = [
-            'id' => $user['id'],
+            'id' => $user['ID'],
             'username' => $user['username'],
-            'email' => $user['email'],
+            'email' => $user['mail'],
             'loggedIn'=>true
 
         ];

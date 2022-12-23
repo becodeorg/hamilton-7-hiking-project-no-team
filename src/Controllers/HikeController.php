@@ -24,4 +24,12 @@ class HikeController{
         include 'Views/SingleHike.view.php';
         include 'Views/Includes/Footer.view.php';
     }
+
+    public function addHike(){
+        $this->Hike
+        
+        
+
+
+    }
 }

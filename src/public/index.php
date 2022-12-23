@@ -31,7 +31,6 @@ if ($url === 'registration') {
 }
 
 if ($url === 'login') {
-    var_dump($_SESSION);
     $authController = new AuthController();
 
     if ($method === 'GET') {
@@ -52,3 +51,9 @@ if ($url === 'hike') {
     $HikeController = new HikeController();
     $HikeController->showHike();
 }
+
+if ($url === 'profil'){
+    $UserController = new UserController();
+    $UserController->showprofile();
+}
+//TODO Add profile route
