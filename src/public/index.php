@@ -56,4 +56,16 @@ if ($url === 'profil'){
     $UserController = new UserController();
     $UserController->showprofile();
 }
+
+if ($url === 'addhike' && $method === 'POST'){
+    $HikeController = new HikeController();
+    $HikeController->addHike($_POST);
+    
+}
+
+if ($url === 'addhike' && $method === 'GET'){
+    $HikeController = new HikeController();
+    $HikeController->showAddPage();
+    
+}
 //TODO Add profile route

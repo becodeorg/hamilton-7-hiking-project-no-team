@@ -25,10 +25,28 @@ class HikeController{
         include 'Views/Includes/Footer.view.php';
     }
 
-    public function addHike(){
-        $this->Hike
-        
-        
+    public function showAddPage(){
+        include 'Views/Includes/Header.view.php';
+        include 'Views/Includes/Navbar.view.php';
+        include 'Views/AddHike.view.php';
+        include 'Views/Includes/Footer.view.php';
+    }
+
+    public function addHike($input){
+        if (!empty($_SESSION['user']['loggedIn'])) {
+            $this->HikeModel = new HikeModel();
+            $name = htmlspecialchars($input["name"]);
+            $distance = htmlspecialchars($input["distance"]);
+            $duration = htmlspecialchars($input["duration"]);
+            $elevation_gain = htmlspecialchars($input["elevation"]);
+            $description = htmlspecialchars($input["description"]);
+            $this->HikeModel->create($name, $distance, $duration, $elevation_gain, $description);
+            $newid = $this->HikeModel->getLastInsertId();
+            header("Location: /hike?id=$newid", true, 301);
+        }
+    else{
+        header("Location: /login", true, 301);
+    }
 
 
     }

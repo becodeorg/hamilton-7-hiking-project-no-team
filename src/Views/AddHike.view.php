@@ -19,7 +19,7 @@
         <input type="text" name="elevation">
     </div>
     <div>
-        <label for="description">Lastname: </label>
+        <label for="description">Description: </label>
         <input type="textfield" name="description">
     </div>
     <button type="submit">Register !</button>
